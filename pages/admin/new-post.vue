@@ -10,15 +10,9 @@ export default {
   },
   methods: {
     savePost(post) {
-      axios
-        .post(
-          "https://newspaper-column-default-rtdb.firebaseio.com/posts.json",
-          post,
-        )
-        .then((res) => {
-          console.log(res);
-          this.$router.push("/admin");
-        });
+      this.$store
+        .dispatch("addPost", post)
+        .then((response) => this.$router.push("/admin"));
     },
   },
 };
